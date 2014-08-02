@@ -1,0 +1,63 @@
+#popup {
+    height: 450px;
+    width: 600px;
+    top: 0; left: 0; bottom: 0; right: 0;
+    position: absolute;
+    margin: auto;
+    background-color: white;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: blue;
+
+}
+
+#popup h2 {
+    margin-top: 0px;
+}
+
+#popup #mapArea {
+    float: left;
+    height: 350px;
+    width: 400px;
+    margin: 20px;
+}
+
+#popup #zoneSelectionArea {
+    float: right;
+    margin: 50px 30px;
+}
+
+
+#popup #zoneSelectionArea input {
+    margin: 5px;
+}
+
+#popup #zoneSelectionArea input:nth-child(1) {
+    margin: 10px 5px;
+}
+
+#popup #mapArea #countrySelectArea {
+    position: absolute;
+    top: 350px;
+    left: 100px;
+    width: 250px;
+}
+
+#popup #mapArea img:nth-child(1) {
+    z-index: -1;
+}
+
+#popup #mapArea img {
+    position: absolute;
+    top: 75px;
+    left: px;
+}
+
+#popup #buttonArea {
+    float: right;
+    clear: both;
+    margin: 0px 20px;
+}

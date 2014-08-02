@@ -1,0 +1,186 @@
+<html>
+<head></head>
+<body>
+<script src="jquery-1.11.1.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+// Container for input field and buttons
+var mainDivStyle = "width: 700px; \
+                    height: 50px; \
+                    top: 0; left: 0; bottom: 0; right: 0; \
+                    position: absolute; \
+                    margin: auto;";
+
+var mainDiv = $("<div></div>", {style : mainDivStyle });
+
+// Text input box
+var textBox = $("<input>");
+
+// Radio buttons
+var radioButtonStyle = "display: inline;";
+var radioButtonRegex = $(" <input type='radio' name='valMethod' value='regex' checked='checked'/> <label for='regex'>Validate with REGEX<label>", {style : radioButtonStyle});
+var radioButtonState = $("<input type='radio' name='valMethod' value='stateMachine'/> <label for='stateMachine'>Validate with State Machine<label> ", {style : radioButtonStyle});
+
+// Glue it all together in the mainDiv
+mainDiv.append(textBox);
+mainDiv.append(radioButtonRegex);
+mainDiv.append(radioButtonState);
+
+// Add mainDiv to body
+$("body").append(mainDiv);
+
+// Validate contents of text box according to selected validation method
+var checkInput = function() {
+    if (radioButtonRegex.is(':checked')) {
+        var validateFunction = regexValidate;
+    }
+    else if (radioButtonState.is(':checked')) {
+        var validateFunction = stateMachineValidate;
+    }
+
+    var currentInput = textBox.val();
+    var isValid = validateFunction(currentInput);
+    if (isValid) {
+        textBox.css({"background-color" : "green"});
+    }
+    else {
+        textBox.css({"background-color" : "red"});
+    }
+}
+
+// Recheck text when text changes or new selection is made
+textBox.on('input', checkInput);
+$("input[name=valMethod]:radio").change(checkInput);
+
+
+var regexValidate = function(string) {
+    var re = /^[^@]+@[^@.]+\.[^@.]+$/
+    return re.test(string);
+}
+
+var stateMachineValidate = function(string) {
+
+    var i = 0;
+    /* Local part */
+    // first char
+    if (string[i] !== '@') {
+        i++
+    }
+    else {
+        return false;
+    }
+    // [following chars]
+    while(i < string.length && string[i] != '@') {
+        i++;
+    }
+
+    /* @ state */
+    if (string[i] === '@'){
+        i++;
+    }
+    else {
+        return false;
+    }
+
+    /* domain name part */
+    // first char
+    if (i < string.length && string[i] !== '@' && string[i] != '.') {
+        i++;
+    }
+    else {
+        return false;
+    }
+    // [remaining chars]
+    while (i < string.length && string[i] !== '@' && string[i] !== '.') {
+        i++;
+    }
+
+    /* dot */
+    if (string[i] === ".") {
+        i++
+    }
+    else {
+        return false;
+    }
+
+    /* tld */
+    // first char
+    if (i < string.length && string[i] !== '@' && string[i] !== '.') {
+        i++;
+    }
+    else {
+        return false;
+    }
+    // [remaining chars]
+    while (i < string.length && string[i] !== '@' && string[i] !== '.') {
+        i++;
+    }
+    if (i !== string.length) {
+        return false;
+    }
+
+    // We made it@
+    return true;
+
+}
+
+// Test cases
+
+fail_tests = ["@hourlynerd.com", "joe", "joe+123@@email.com", "abc@abc@.com", "abc@@d.com",
+              "aslkj@.com", "abc@d..com", "abc@asd."];
+pass_tests = ["joe@hourlynerd.com", " joe+123@email.com", "adsljk.kjhsd+dskh@acjd.place",
+              "abc_def@ghj.c"];
+
+var fail = false;
+console.log("Beginning pass tests...");
+pass_tests.forEach(function(test) {
+    console.log("Testing " + test);
+    if (regexValidate(test)) {
+        console.log("Passed with regex validate :) ");
+    }
+    else {
+        console.log("Failed with regex validate : ( string: " + test);
+        fail = true;
+    }
+
+    if (stateMachineValidate(test)) {
+        console.log("Passed with state machine validate :)");
+    }
+    else {
+        console.log("Failed with state machine validate :(, string: " + test);
+        fail = true;
+    }
+    console.log("Pass tests successful :)");
+});
+
+console.log("Beginning fail tests...");
+fail_tests.forEach(function(test) {
+    console.log("Testing " + test);
+    if (!regexValidate(test)) {
+        console.log("Failed with regex validate :)");
+    }
+    else {
+        console.log("Passed with regex validate :(, string: " + test);
+        fail = true;
+    }
+
+    if (!stateMachineValidate(test)) {
+        console.log("Failed with state machine validate :)");
+    }
+    else {
+        console.log("passed with state machine validate :(, string: " + test);
+        fail = true;
+    }
+    console.log("Pass tests successful :)");
+});
+
+if (fail === true) {
+    console.log("Test failed :(");
+}
+else {
+    console.log("All tests successful :)");
+}
+
+</script>
+</body>
+</html>

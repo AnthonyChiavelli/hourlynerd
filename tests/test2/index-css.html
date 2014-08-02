@@ -1,0 +1,98 @@
+<html> 
+<head> 
+    <style>
+        body {
+            margin: 0px auto;
+            width: 650px;
+        }
+        .header {
+            background-color: #85aaff;
+            margin: 20px 0px;
+            padding: 5px;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            border-radius: 6px;
+        }
+
+        .header h1 {
+            margin:0px;
+        }
+
+        .content ul {
+            padding: 0px;
+            list-style-type: none;
+            text-align: right;
+        }
+
+        /* Select first "a" child in content*/
+        .content > a:nth-child(1) {
+            margin: 0px;
+            padding: 5px 10px;
+            background-color: #abddff;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+         /* Select odd children*/
+        .content ul li:nth-child(odd) {
+            background-color: #dddddd;
+        }
+
+        /* Darken rows when hovered over*/
+        .content ul li:hover {
+            background-color: #bbbbbb;
+        }
+
+        /* Float first link in row (name) to the left*/
+        .content ul a:nth-child(1) {
+            float: left;
+        }
+    </style>
+</head> 
+<body> 
+    <div class="header"> 
+        <h1>Contacts</h1> 
+    </div> 
+    <div class="content"> 
+        <a href="#null">create new contact</a> 
+        <ul> 
+            <li> 
+                <a href="#null">bill billson</a> 
+                <a href="#null">edit</a> 
+                <a href="#null">delete</a> 
+            </li>            
+            <li> 
+                <a href="#null">carl carlson</a> 
+                <a href="#null">edit</a> 
+                <a href="#null">delete</a> 
+            </li> 
+            
+            <li> 
+                <a href="#null">david davidson</a> 
+                <a href="#null">edit</a> 
+                <a href="#null">delete</a> 
+            </li> 
+            
+            <li> 
+                <a href="#null">emily emilson</a> 
+                <a href="#null">edit</a> 
+                <a href="#null">delete</a> 
+            </li> 
+            
+            <li> 
+                <a href="#null">frederick frederickson</a> 
+                <a href="#null">edit</a> 
+                <a href="#null">delete</a> 
+            </li> 
+            
+            <li> 
+                <a href="#null">georgia georgson</a> 
+                <a href="#null">edit</a> 
+                <a href="#null">delete</a> 
+            </li> 
+        </ul> 
+    </div> 
+</body> 
+</html> 

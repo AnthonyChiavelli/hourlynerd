@@ -1,0 +1,98 @@
+HourlyNerd Inc.
+Engineering Qualification Assignments
+
+Name: Anthony Reid
+Date: 8/2/2014
+
+Pre-requisites: Python runtime (version 2.7) and suitable text/HTML editor.
+
+HourlyNerd is a web application that will require lots of user inputs on web based forms. When dealing with data submitted from the web the developer needs to convert data from strings to native types, as well as validate that the values match the data model. These tests are intended to familiarize and test basic developer capabilities.
+
+Please fill in the time it took you to complete each assignment.
+
+￼
+----------------------------------------------------------------------------------------------------
+Assignment #1 - Basic python and object oriented programming.
+====================================================================================================
+
+Setup:
+
+1. Under the test1 folder, find the file called validation.py.
+2. The main method simulates a form submission on the web. The validation code is currently not filled in.
+3. The test goal is to implement validation for all fields. There are three TODO sections in the file to be filled in.
+4. Field lengths are specified in MyFormProcessor.
+
+Instructions:
+
+1. Fill in the 3 TODO sections in the file.
+2. Write 4 test cases as follows
+    a. Negative Test case - Call form processor (like in the __main__ method) with an invalid email address to ensure that the validators you wrote in Step 1 are working OK.
+    b. Positive Test case - Call the form processor with a valid email address. Everything should go through normally.
+    c. Write the above two tests for the “first_name” field.
+
+Time Taken:
+
+30 mins
+
+----------------------------------------------------------------------------------------------------
+Assignment #2 - Basic CSS
+====================================================================================================
+
+Setup:
+
+1. Under the test2 folder, find the following files
+    a. index-css.html
+    b. final-css.png
+
+Instructions:
+
+1. Change the file index-css.html so it looks like the image final-css.png.  Please only use CSS (do not change the html body). Note that each row in the list should turn a dark gray color when hovered over (e.g. the row containing "Emily Emilson").
+2. Matching the colors EXACTLY to the image is not important/required, however styling is important.
+
+Time Taken:
+
+45 mins
+
+----------------------------------------------------------------------------------------------------
+Assignment #3 - Basic Javascript
+====================================================================================================
+
+Setup:
+
+1. download jquery from http://jquery.com/download/
+2. Under the test3 folder, find the following files
+    a. index-js.html
+    b. final-js.png
+
+Instructions:
+
+1. Using only javascript and the simple HTML template in index-js.html, dynamically create a simple panel that matches the screenshot in final-js.png.
+2. A reference to jquery has been included in the template and you are encouraged to use it for this test. Feel free to use a newer version.
+3. The input field should function as an email validator. As a user types, the javascript should test to see if a valid email address has been typed in. If yes, the input box should turn green. If no, the input box should turn red.
+4. There are 2 separate types of validations algorithms required (depending on the checkbox)
+   a. When the “Validate with Regex” is checked, any valid email address should be allowed.
+     - All valid email addresses must be of the form x@y.tld (so “joe” is invalid and “@hourlynerd.com” is invalid, but joe+123@email.com is valid).
+     - There is a wikipedia article about what constitues a valid email that you should check out.
+   b. When the “Validate with State Machine” is checked, the validator should use a state machine based validator (character by character) to validate the email address. Dont use regex.
+5. Include automated tests cases in the page as well.
+
+
+Time Taken:
+
+1 hour
+
+----------------------------------------------------------------------------------------------------
+Assignment #4 – JS/HTML
+====================================================================================================
+
+Setup:
+1. Under the folder test4, find images from 1-10 that demonstrate different zones in the U.S.
+2. The final desired panel looks like the image zone_pref_popup.png
+
+Instructions:
+
+1. Using the images sm_US_map and 0-9.png, create a popup that looks like zone_pref_popup.png.
+2. Selecting a zone on the right should update the map by highlighting the corresponding zone (i.e. the checkbox state on the right should always match the selections shown on the map)
+
+Time Taken:
+2.5 hours
