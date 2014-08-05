@@ -1,7 +1,99 @@
+
+
+
+
 <html>
 <head></head>
 <body>
-<script src="jquery-1.11.1.js" type="text/javascript"></script>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/qunit/1.14.0/qunit.css" type="text/css" media="screen" />
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/qunit/1.14.0/qunit.js"></script>
+
+
+
+
+<script type="text/javascript">
+
+  $(function(){
+    $('body').append('<h1 id="qunit-header">Email Validator Tests</h1>'+
+        '<h2 id="qunit-banner"></h2>'+
+        '<div id="qunit-testrunner-toolbar"></div>'+
+        '<h2 id="qunit-userAgent"></h2>'+
+        '<ol id="qunit-tests"></ol>'+
+        '<div id="qunit-fixture"></div>');
+
+
+    var good = ["catman@gmail.com",
+      "catman2@gmail.com",
+      "me.catman@gmail.com",
+      "catman+spam@gmail.com",
+      "steve888@something.co.uk",
+      "steve_888@something.co.uk",
+      "steve_8+8+8@something.in",
+      "a@a.com",
+      "a@a.cn",
+      "4444444@5.com",
+      "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb@a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.travel",
+      "XN--PGBS0DH@aaa-aaa.tv",
+      "dddd@bbbb.cooooom",
+      "dd'dd@bbbb.com"
+    ];
+    var evil = ["",
+      "@asdffds.com",
+      "saffasdf.com",
+      "...asadfsdfa@asdfadsf.net",
+      ".alright.@mac.com",
+      "sdf sadfsa@sadfsad asdfas.in",
+      "this.email.is.ok@but.the.tld.sucks.",
+      "..........@........",
+      "aaaaaaaaaaaaa",
+      "........",
+      "mcatman@gmail@gmail.com",
+      "a",
+      "@.com",
+      "aaa@bbb.+++",
+      "steve<rocks>@gmail.com",
+      "misha;catman@gmail.com",
+      "test@test.com,test2@test.com",
+      "another    spacious@email.org",
+      "#%$#WEFARRT$%W$G##@asdfsdafsadASDF$#RSDF.com",
+      "this.domain.is.bad@Hello$World.com",
+      ">>>>@<<<<.>>>",
+      "a@b.c",
+      ".aaa@b.com",
+      "aaaa@bbbb.org.",
+      ".aaaa.@bbbb.com",
+      ".aaaa.dddd.@bbbb.com",
+      "aaaa.dddd.@bbbb.com",
+      ".mike.@.test.com.",
+      "mike...smith..a@test.com",
+      "dddd.@bbbb.com",
+      "dddd@bbbb.c",
+      "dddd@bbbb.c1",
+      "dddd@bbbb.123",
+      "dddd@bbbb.com1",
+      "dddd@bbbb.com+",
+      "dd\"dd@bbbb.com"
+    ];
+
+    test("valid addresses", function() {
+      for(var i = 0; i < good.length; i++){
+        ok( regexValidate(good[i]),        "regex: "+good[i] );
+        ok( stateMachineValidate(good[i]), "sm... : "+good[i] );
+      }
+    });
+
+    test("invalid addresses", function() {
+      for(var i = 0; i < evil.length; i++){
+        ok(! regexValidate(evil[i]),        "regex: "+evil[i] );
+        ok(! stateMachineValidate(evil[i]), "sm... : "+evil[i] );
+      }
+    });
+
+  });
+</script>
+
 <script type="text/javascript">
 
 // Container for input field and buttons
@@ -31,21 +123,21 @@ $("body").append(mainDiv);
 
 // Validate contents of text box according to selected validation method
 var checkInput = function() {
-    if (radioButtonRegex.is(':checked')) {
-        var validateFunction = regexValidate;
-    }
-    else if (radioButtonState.is(':checked')) {
-        var validateFunction = stateMachineValidate;
-    }
+  if (radioButtonRegex.is(':checked')) {
+    var validateFunction = regexValidate;
+  }
+  else if (radioButtonState.is(':checked')) {
+    var validateFunction = stateMachineValidate;
+  }
 
-    var currentInput = textBox.val();
-    var isValid = validateFunction(currentInput);
-    if (isValid) {
-        textBox.css({"background-color" : "green"});
-    }
-    else {
-        textBox.css({"background-color" : "red"});
-    }
+  var currentInput = textBox.val();
+  var isValid = validateFunction(currentInput);
+  if (isValid) {
+    textBox.css({"background-color" : "green"});
+  }
+  else {
+    textBox.css({"background-color" : "red"});
+  }
 }
 
 // Recheck text when text changes or new selection is made
@@ -54,133 +146,180 @@ $("input[name=valMethod]:radio").change(checkInput);
 
 
 var regexValidate = function(string) {
-    var re = /^[^@]+@[^@.]+\.[^@.]+$/
-    return re.test(string);
-}
+  var re = /^[^@\s<>";:.][^@\"\s<>;:]*@[a-zA-Z.0-9-]+\.[a-zA-Z.-0-9-]+[a-zA-Z]$/;
+  return re.test(string);
+};
 
 var stateMachineValidate = function(string) {
 
-    var i = 0;
-    /* Local part */
-    // first char
-    if (string[i] !== '@') {
-        i++
+  // Is this a valid char for the local portion?
+  var isValidLocalChar = function(char) {
+    var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.!#$%&'*+-/=?^_`{|}~";
+    return chars.indexOf(char) != -1;
+  };
+
+  // Is this a valid char for the domain?
+  var isValidDomainChar = function (char) {
+    var chars = 'abcdefghijklmnopqrstuvwxyzABCEDFGHIJKLMNOPQRSTUVWXYZ0123456789-.';
+    return chars.indexOf(char) != -1;
+  };
+
+  // Is this a valid char for the TLD of the domain?
+  var isValidTLDChar = function(char) {
+    var chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.';
+    return chars.indexOf(char) != -1;
+  };
+
+  var dotState = false;
+
+  var i = 0;
+
+  /* Local part */
+  // first char
+  if (string[i] !== '.' && isValidLocalChar(string[i])) {
+    i++;
+  }
+  else {
+    return false;
+  }
+  // [following chars]
+  while(isValidLocalChar(string[i])) {
+    // Prevent back to back dots
+    if (string[i] == ".") {
+      if (dotState) {
+        return false;
+      }
+      else {
+        dotState = true;
+      }
     }
     else {
-        return false;
+      dotState = false;
     }
-    // [following chars]
-    while(i < string.length && string[i] != '@') {
-        i++;
-    }
+    i++;
+  }
+  // Can't end on a dot
+  if (dotState) {
+    return false;
+  }
 
-    /* @ state */
-    if (string[i] === '@'){
-        i++;
-    }
-    else {
-        return false;
-    }
+  /* @ state */
+  if (string[i] === '@'){
+    i++;
+  }
+  else {
+    return false;
+  }
 
-    /* domain name part */
-    // first char
-    if (i < string.length && string[i] !== '@' && string[i] != '.') {
-        i++;
-    }
-    else {
-        return false;
-    }
-    // [remaining chars]
-    while (i < string.length && string[i] !== '@' && string[i] !== '.') {
-        i++;
-    }
+  /* domain name part */
+  // first char
+  if (i < string.length && isValidDomainChar(string[i])) {
+    i++;
+  }
+  else {
+    return false;
+  }
+  // [remaining chars]
+  while (i < string.length && isValidDomainChar(string[i]) && string[i] !== ".") {
+    i++;
+  }
 
-    /* dot */
-    if (string[i] === ".") {
-        i++
-    }
-    else {
-        return false;
-    }
+  /* dot */
+  if (string[i] === ".") {
 
-    /* tld */
-    // first char
-    if (i < string.length && string[i] !== '@' && string[i] !== '.') {
-        i++;
-    }
-    else {
-        return false;
-    }
-    // [remaining chars]
-    while (i < string.length && string[i] !== '@' && string[i] !== '.') {
-        i++;
-    }
-    if (i !== string.length) {
-        return false;
-    }
+    i++;
+  }
+  else {
+    return false;
+  }
 
-    // We made it@
-    return true;
+  /* tld */
+  // first char
+  if (i < string.length && isValidTLDChar(string[i])) {
+    i++;
+  }
+  else {
+    return false;
+  }
+  // [remaining chars]
+  var tldCharCount = 1;
+  while (i < string.length && isValidTLDChar(string[i])) {
+    tldCharCount++;
+    i++;
+  }
+  if (tldCharCount < 2) {
+    return false;
+  }
 
-}
+  // Make sure we've gotten to the end of the string and it doesn't end with a . or -
+  if (i != string.length || string[i-1] === '.' || string[i-1] === '-') {
+    return false;
+  }
+
+  // We made it!
+  return true;
+
+};
 
 // Test cases
 
 fail_tests = ["@hourlynerd.com", "joe", "joe+123@@email.com", "abc@abc@.com", "abc@@d.com",
-              "aslkj@.com", "abc@d..com", "abc@asd."];
+  "aslkj@.com", "abc@d..com", "abc@asd.", "abcs@as.+++"];
+
 pass_tests = ["joe@hourlynerd.com", " joe+123@email.com", "adsljk.kjhsd+dskh@acjd.place",
-              "abc_def@ghj.c"];
+  "abc_def@ghj.c"];
 
 var fail = false;
 console.log("Beginning pass tests...");
 pass_tests.forEach(function(test) {
-    console.log("Testing " + test);
-    if (regexValidate(test)) {
-        console.log("Passed with regex validate :) ");
-    }
-    else {
-        console.log("Failed with regex validate : ( string: " + test);
-        fail = true;
-    }
+  console.log("Testing " + test);
+  if (regexValidate(test)) {
+    console.log("Passed with regex validate :) ");
+  }
+  else {
+    console.log("Failed with regex validate : ( string: " + test);
+    fail = true;
+  }
 
-    if (stateMachineValidate(test)) {
-        console.log("Passed with state machine validate :)");
-    }
-    else {
-        console.log("Failed with state machine validate :(, string: " + test);
-        fail = true;
-    }
-    console.log("Pass tests successful :)");
+  if (stateMachineValidate(test)) {
+    console.log("Passed with state machine validate :)");
+  }
+  else {
+    console.log("Failed with state machine validate :(, string: " + test);
+    fail = true;
+  }
+  console.log("Pass tests successful :)");
 });
 
 console.log("Beginning fail tests...");
 fail_tests.forEach(function(test) {
-    console.log("Testing " + test);
-    if (!regexValidate(test)) {
-        console.log("Failed with regex validate :)");
-    }
-    else {
-        console.log("Passed with regex validate :(, string: " + test);
-        fail = true;
-    }
+  console.log("Testing " + test);
+  if (!regexValidate(test)) {
+    console.log("Failed with regex validate :)");
+  }
+  else {
+    console.log("Passed with regex validate :(, string: " + test);
+    fail = true;
+  }
 
-    if (!stateMachineValidate(test)) {
-        console.log("Failed with state machine validate :)");
-    }
-    else {
-        console.log("passed with state machine validate :(, string: " + test);
-        fail = true;
-    }
-    console.log("Pass tests successful :)");
+  if (!stateMachineValidate(test)) {
+    console.log("Failed with state machine validate :)");
+  }
+  else {
+    console.log("passed with state machine validate :(, string: " + test);
+    fail = true;
+  }
+  console.log("Pass tests successful :)");
 });
 
 if (fail === true) {
-    console.log("Test failed :(");
+  console.log("Test failed :(");
 }
 else {
-    console.log("All tests successful :)");
+  console.log("All tests successful :)");
 }
 
 </script>
 </body>
 </html>
+

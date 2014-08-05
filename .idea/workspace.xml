@@ -30,10 +30,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index-js.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index-js.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/test3/index-js.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="481" selection-end="481" vertical-scroll-proportion="-5.2173915" vertical-offset="135" max-vertical-offset="2880">
+            <state line="78" column="12" selection-start="2220" selection-end="2220" vertical-scroll-proportion="0.3321033" vertical-offset="990" max-vertical-offset="2880">
               <folding />
             </state>
           </provider>
@@ -42,16 +42,34 @@
       <file leaf-file-name="index-css.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/test2/index-css.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="23" selection-start="701" selection-end="809" vertical-scroll-proportion="-9.26087" vertical-offset="252" max-vertical-offset="1560">
+            <state line="31" column="23" selection-start="701" selection-end="809" vertical-scroll-proportion="16.956522" vertical-offset="855" max-vertical-offset="1560">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="instructions.txt" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="validation.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/test1/validation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="116" column="28" selection-start="3315" selection-end="3315" vertical-scroll-proportion="0.0" vertical-offset="1520" max-vertical-offset="2805">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="instructions.txt" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/instructions.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="14" selection-start="88" selection-end="88" vertical-scroll-proportion="0.104347825" vertical-offset="0" max-vertical-offset="1590">
+            <state line="57" column="59" selection-start="2573" selection-end="2573" vertical-scroll-proportion="0.0" vertical-offset="1015" max-vertical-offset="1590">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jquery-1.11.1.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/test3/jquery-1.11.1.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="154710">
               <folding />
             </state>
           </provider>
@@ -186,10 +204,6 @@
               <option name="myItemId" value="tests" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -201,47 +215,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HourlyNerd" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HourlyNerd" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HourlyNerd" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HourlyNerd" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test1" />
+              <option name="myItemId" value="__MACOSX" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -259,6 +233,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/tests/test1/validation.py" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
+    <property name="FullScreen" value="false" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -445,7 +420,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="27" width="1922" height="1054" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3297062" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -485,13 +460,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tests/test1/validation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="171" column="48" selection-start="5191" selection-end="5191" vertical-scroll-proportion="0.63746226" vertical-offset="2143" max-vertical-offset="2805">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test2/final-css.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -505,13 +473,6 @@
     <entry file="file://$PROJECT_DIR$/tests/test4/jquery-1.11.1.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.53571427" vertical-offset="315" max-vertical-offset="154710">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test3/jquery-1.11.1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="154710">
           <folding />
         </state>
       </provider>
@@ -559,20 +520,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test3/index-js.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="481" selection-end="481" vertical-scroll-proportion="-5.2173915" vertical-offset="135" max-vertical-offset="2880">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test2/index-css.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="23" selection-start="701" selection-end="809" vertical-scroll-proportion="-9.26087" vertical-offset="252" max-vertical-offset="1560">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test4/sm_US_map.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -580,7 +527,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/instructions.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="14" selection-start="88" selection-end="88" vertical-scroll-proportion="0.104347825" vertical-offset="0" max-vertical-offset="1590">
+        <state line="57" column="59" selection-start="2573" selection-end="2573" vertical-scroll-proportion="0.0" vertical-offset="1015" max-vertical-offset="1590">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test3/jquery-1.11.1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="154710">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test2/index-css.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="23" selection-start="701" selection-end="809" vertical-scroll-proportion="16.956522" vertical-offset="855" max-vertical-offset="1560">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test1/validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="116" column="28" selection-start="3315" selection-end="3315" vertical-scroll-proportion="0.0" vertical-offset="1520" max-vertical-offset="2805">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test3/index-js.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="78" column="12" selection-start="2220" selection-end="2220" vertical-scroll-proportion="0.3321033" vertical-offset="990" max-vertical-offset="2880">
           <folding />
         </state>
       </provider>
